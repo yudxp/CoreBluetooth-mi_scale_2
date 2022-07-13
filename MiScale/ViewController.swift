@@ -62,19 +62,19 @@ extension ViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
           else { print("missing updated value"); return }
       
       let weightData = scaleData as NSData
-      //                print(weightData)
+//      print("Weight data: ", weightData)
       
       let lastHex = weightData.last!
-      //                print("Weight: ",lastHex)
+//                      print("Weight: ", lastHex)
       let multiplierHex = weightData[11]
-      //                print("Multiplier: ",multiplierHex)
+//                      print("Multiplier: ", multiplierHex)
       let weightStringValue = lastHex.description
       let weightValue = Int(weightStringValue)!
-      print("IntValue: \(weightValue)")
+//      print("IntValue: \(weightValue)")
       
       let multiplierStringValue = multiplierHex.description
       let mulitplierValue = Int(multiplierStringValue)!
-      print("MulitplierValue: \(mulitplierValue)")
+//      print("MulitplierValue: \(mulitplierValue)")
       
       weightMeasure = (((Double(weightValue) * 256) + Double(mulitplierValue)) * 0.005)
       weightMeasureGrams = weightMeasure * 1000
