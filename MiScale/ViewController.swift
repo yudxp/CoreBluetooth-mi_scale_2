@@ -17,10 +17,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate,UIImagePi
   
   var centralManager: CBCentralManager!
   let scaleUUID = CBUUID(string: "0x181B")
+  let scaleCharacteristic: String = "2A9C"
   var scalePeripheral : CBPeripheral!
   
   override func viewDidLoad() {
       addCameraInView()
+      customCameraView.layer.cornerRadius = 16
       super.viewDidLoad()
       centralManager = CBCentralManager(delegate: self, queue: nil)
   }
@@ -62,24 +64,15 @@ extension ViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
           else { print("missing updated value"); return }
       
       let weightData = scaleData as NSData
-//      print("Weight data: ", weightData)
-      
       let lastHex = weightData.last!
-//                      print("Weight: ", lastHex)
       let multiplierHex = weightData[11]
-//                      print("Multiplier: ", multiplierHex)
       let weightStringValue = lastHex.description
       let weightValue = Int(weightStringValue)!
-//      print("IntValue: \(weightValue)")
-      
       let multiplierStringValue = multiplierHex.description
       let mulitplierValue = Int(multiplierStringValue)!
-//      print("MulitplierValue: \(mulitplierValue)")
-      
       weightMeasure = (((Double(weightValue) * 256) + Double(mulitplierValue)) * 0.005)
       weightMeasureGrams = weightMeasure * 1000
-      //                print(weightMeasure)
-      self.weightLabel.text = String("\(weightMeasure)") + " Kg"
+      self.weightLabel.text = String(format: "%.2f Kg", weightMeasure)
   }
 
   func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -88,7 +81,7 @@ extension ViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
               
               switch characteristic.uuid.uuidString{
                   
-              case "2A9C":
+              case scaleCharacteristic :
                   peripheral.setNotifyValue(true, for: characteristic)
                   print("Characteristic: \(characteristic)")
                   peripheral.readValue(for: characteristic)
@@ -98,8 +91,6 @@ extension ViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
           }
       }
   }
-  
-
   
   func centralManagerDidUpdateState(_ central: CBCentralManager) {
     switch central.state {
@@ -116,7 +107,6 @@ extension ViewController: CBCentralManagerDelegate,CBPeripheralDelegate {
       case .poweredOn:
         print("central.state is .poweredOn")
         centralManager.scanForPeripherals(withServices: [scaleUUID])
-      //centralManager.scanForPeripherals(withServices: nil)
       @unknown default:
         print("Error")
     }

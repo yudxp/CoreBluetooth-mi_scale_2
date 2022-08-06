@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15952A65287E57E80023C780 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15952A64287E57E80023C780 /* HealthKit.framework */; };
+		15952A67287FB54C0023C780 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15952A66287FB54C0023C780 /* Model.swift */; };
 		15E0C500284FA2AD0052A775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0C4FF284FA2AD0052A775 /* AppDelegate.swift */; };
 		15E0C502284FA2AD0052A775 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0C501284FA2AD0052A775 /* SceneDelegate.swift */; };
 		15E0C504284FA2AD0052A775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E0C503284FA2AD0052A775 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		15952A64287E57E80023C780 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		15952A66287FB54C0023C780 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		15E0C4FC284FA2AD0052A775 /* MiScale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiScale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E0C4FF284FA2AD0052A775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15E0C501284FA2AD0052A775 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		15E0C4FE284FA2AD0052A775 /* MiScale */ = {
 			isa = PBXGroup;
 			children = (
+				15952A66287FB54C0023C780 /* Model.swift */,
 				15E0C4FF284FA2AD0052A775 /* AppDelegate.swift */,
 				15E0C501284FA2AD0052A775 /* SceneDelegate.swift */,
 				15E0C503284FA2AD0052A775 /* ViewController.swift */,
@@ -153,6 +156,7 @@
 				15E0C504284FA2AD0052A775 /* ViewController.swift in Sources */,
 				15E0C500284FA2AD0052A775 /* AppDelegate.swift in Sources */,
 				15E0C502284FA2AD0052A775 /* SceneDelegate.swift in Sources */,
+				15952A67287FB54C0023C780 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +307,8 @@
 				DEVELOPMENT_TEAM = SLXHN25QU8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiScale/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "app need access your bluetooth";
+				INFOPLIST_KEY_NSCameraUsageDescription = "live view need your access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,6 +338,8 @@
 				DEVELOPMENT_TEAM = SLXHN25QU8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MiScale/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "app need access your bluetooth";
+				INFOPLIST_KEY_NSCameraUsageDescription = "live view need your access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
